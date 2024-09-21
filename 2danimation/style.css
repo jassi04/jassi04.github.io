@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.grid-item {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    transition: all 0.3s ease;
+}
+
+.grid-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.grid-item:hover {
+    z-index: 10;
+    transform: scale(1.5);
+
+}
+
+.grid-item video:hover {
+    object-fit: contain;
+    transform: scale(1.1);
+}
+
+/* Blurs other videos */
+.grid-item:hover ~ .grid-item video,
+.grid-item:hover video:not(:hover) {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Slightly shrink the non-hovered grid items */
+.grid-item:not(:hover) {
+    transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
+}
